@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "iwara-web",
+  "name": "iwara-web-proxy",
   "main": "src/index.js",
   "compatibility_date": "2026-03-08",
   "compatibility_flags": ["nodejs_compat"],
