@@ -1,0 +1,52 @@
+name: Sync upstream
+
+# 每天自动把 XuexGao/iwara-web-proxy 的更新合并进本 fork 的 main。
+# 合并后 push 回 main，会触发 Cloudflare Workers Builds 自动部署。
+on:
+  schedule:
+    - cron: "0 18 * * *" # 每天 18:00 UTC = 北京时间 02:00
+  workflow_dispatch: {} # 允许在 Actions 页面手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Merge upstream/main into fork
+        id: merge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git remote add upstream https://github.com/XuexGao/iwara-web-proxy.git
+          git fetch upstream
+
+          # 已经是最新就不动
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "up to date, nothing to do"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # 先严格合并；有冲突时用 -X ours 重试：
+          # 冲突处保留本 fork 的版本（例如你删掉 README 界面表格那笔改动），
+          # 其余上游代码改动全部合入。
+          if ! git merge upstream/main --no-edit; then
+            echo "strict merge conflict, retry with -X ours"
+            git merge --abort
+            git merge -X ours upstream/main --no-edit \
+              -m "chore: sync upstream (auto, conflicts resolved with -X ours)"
+          fi
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push to fork main
+        if: steps.merge.outputs.changed == 'true'
+        run: git push origin main
