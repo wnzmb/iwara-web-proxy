@@ -24,31 +24,6 @@
 配上自建的播放器：清晰度切换、进度条悬停预览、双击全屏、长按 2 倍速、
 以及**切页面不中断的迷你播放器**。
 
-## 界面
-
-<table>
-<tr>
-<td width="50%"><img src="./docs/screenshots/home-dark.webp" alt="作品索引（深色）" /><br /><sub><b>作品索引</b> · 五种排序，每页 30 件</sub></td>
-<td width="50%"><img src="./docs/screenshots/home-light.webp" alt="作品索引（浅色）" /><br /><sub><b>浅色主题</b> · 暖白纸底，可跟随系统</sub></td>
-</tr>
-<tr>
-<td width="50%"><img src="./docs/screenshots/watch-dark.webp" alt="播放页" /><br /><sub><b>播放页</b> · 左栏播放与评论，右栏作者与相关作品</sub></td>
-<td width="50%"><img src="./docs/screenshots/watch-light.webp" alt="播放页（浅色）" /><br /><sub><b>播放页（浅色）</b> · 画面区始终保持深色</sub></td>
-</tr>
-<tr>
-<td width="50%"><img src="./docs/screenshots/mobile-watch.webp" alt="手机播放页" /><br /><sub><b>手机播放页</b> · 视频 → 标题 → 作者 → 说明 → 评论 → 相关</sub></td>
-<td width="50%"><img src="./docs/screenshots/mobile.webp" alt="手机首页" /><br /><sub><b>手机首页</b> · 双列瀑布流，进度条加粗</sub></td>
-</tr>
-<tr>
-<td width="50%"><img src="./docs/screenshots/gallery.webp" alt="图库" /><br /><sub><b>图库</b> · 插画与动图，可逐张查看原图</sub></td>
-<td width="50%"><img src="./docs/screenshots/settings.webp" alt="设置" /><br /><sub><b>设置</b> · 分级、悬停预览、清晰度、配色、Token</sub></td>
-</tr>
-<tr>
-<td width="50%"><img src="./docs/screenshots/subscriptions.webp" alt="订阅" /><br /><sub><b>订阅</b> · 只看关注的作者，未登录会说明原因</sub></td>
-<td width="50%"></td>
-</tr>
-</table>
-
 ## 能做什么
 
 | 模块 | 说明 |
